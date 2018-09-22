@@ -6,9 +6,11 @@ public class PlayerController : MonoBehaviour
 {
     public float speed;
     private Rigidbody rb;
+    private int count;
 
     void Start()
     {
+        count = 0;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -20,5 +22,14 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 
         rb.AddForce(movement * speed);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Pick Up"))
+        {
+            count++;
+            other.gameObject.SetActive(false);
+        }
     }
 }
