@@ -5,17 +5,10 @@ using UnityEngine;
 public class Exit : MonoBehaviour
 {
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void OnGUI()
     {
 
-        if (GUI.Button(new Rect(20, 20, 200, 20), "Exit"))
+        if (GUI.Button(new Rect(Screen.width - 200 - 10, 10, 200, 20), "Exit"))
         {
             Application.LoadLevel(0);
         }
