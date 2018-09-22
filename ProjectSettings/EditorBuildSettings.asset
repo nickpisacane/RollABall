@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 27cf7c07760504e10ad9af4e781acd5e
   - enabled: 0
-    path: Assets/Scenes/Roll-a-Ball.unity
+    path: 
     guid: 402d594e4f6af43d1a6e3a69f8cfff7f
+  - enabled: 1
+    path: Assets/Scenes/MiniGame.unity
+    guid: 673a7b2e179264afe98f599893eb3894
   m_configObjects: {}
