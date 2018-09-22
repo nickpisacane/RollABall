@@ -5,13 +5,6 @@ using UnityEngine;
 public class MainMenu : MonoBehaviour
 {
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void OnGUI()
     {
         int w = Screen.width;
@@ -26,9 +19,9 @@ public class MainMenu : MonoBehaviour
         if (GUI.Button(new Rect(x, y + 30, 200, 20), "Quit"))
         {
 #if UNITY_EDITOR
-
+            UnityEditor.EditorApplication.isPlaying = false;
 #else
-				Application.Quit();
+            Application.Quit();
 #endif
         }
     }
