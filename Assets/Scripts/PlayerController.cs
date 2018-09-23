@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public Text winText;
     private Rigidbody rb;
     private int count;
+    private AudioSource pickUpAudioSource;
 
     private void SetCountText()
     {
@@ -20,9 +21,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void PlayPickUpSound()
+    {
+        pickUpAudioSource.time = 0.2f;
+        pickUpAudioSource.Play();
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        pickUpAudioSource = GetComponent<AudioSource>();
         count = 0;
         SetCountText();
         winText.text = "";
@@ -45,6 +53,7 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             count++;
             SetCountText();
+            PlayPickUpSound();
         }
     }
 }
