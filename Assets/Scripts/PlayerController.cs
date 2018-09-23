@@ -8,6 +8,11 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public Text countText;
     public Text winText;
+    public GameObject ground;
+    public Color groundFlashColor;
+    public float groundFlashDuration;
+    private Color originalGroundColor;
+    private Renderer groundRenderer;
     private Rigidbody rb;
     private int count;
     private AudioSource pickUpAudioSource;
@@ -27,6 +32,15 @@ public class PlayerController : MonoBehaviour
         pickUpAudioSource.Play();
     }
 
+    private IEnumerator FlashGroundColor()
+    {
+
+        groundRenderer.material.color = groundFlashColor;
+        yield return new WaitForSeconds(groundFlashDuration);
+        groundRenderer.material.color = originalGroundColor;
+
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -34,6 +48,8 @@ public class PlayerController : MonoBehaviour
         count = 0;
         SetCountText();
         winText.text = "";
+        groundRenderer = ground.GetComponent<Renderer>();
+        originalGroundColor = groundRenderer.material.color;
     }
 
     void FixedUpdate()
@@ -54,6 +70,7 @@ public class PlayerController : MonoBehaviour
             count++;
             SetCountText();
             PlayPickUpSound();
+            StartCoroutine(FlashGroundColor());
         }
     }
 }
